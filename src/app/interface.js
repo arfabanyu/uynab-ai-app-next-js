@@ -102,7 +102,9 @@ export default function Interface() {
       ...children,
       <TextQuestion key={input.current.value} question={input.current.value} />,
     ]);
-    requestAnswer(input.current.value, user.name, answer).then((res) => setAnswer(res));
+    requestAnswer(input.current.value, user.name, answer).then((res) =>
+      setAnswer(res)
+    );
   }
 
   useEffect(() => {
@@ -127,7 +129,11 @@ export default function Interface() {
   return (
     <main className="bg-slate-600 h-screen flex flex-col">
       <Navbar />
-      <section ref={output} id="top" className="h-full overflow-y-scroll scroll-smooth">
+      <section
+        ref={output}
+        id="top"
+        className="h-full overflow-y-scroll scroll-smooth"
+      >
         {children.map((child) => child)}
         {children.length === 0 && (
           <h1 className="text-3xl text-opacity-25 text-white grid place-content-center h-full">
