@@ -9,14 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-oauth/google": "^0.12.1",
+    "create-next-app": "^14.2.3",
+    "debug": "^4.3.4",
+    "groq-sdk": "^0.4.0",
+    "jwt-decode": "^4.0.0",
+    "next": "14.2.3",
+    "openai": "^4.47.1",
     "react": "^18",
+    "react-cookie": "^7.1.4",
     "react-dom": "^18",
-    "next": "14.2.3"
+    "uuid": "^9.0.1",
+    "vercel": "^32.3.0"
   },
   "devDependencies": {
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
     "eslint": "^8",
-    "eslint-config-next": "14.2.3"
+    "eslint-config-next": "14.2.3",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1"
   }
 }
