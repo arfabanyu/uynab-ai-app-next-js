@@ -1,15 +1,12 @@
 import { useEffect, useRef, useState, useContext } from "react";
 import { requestAnswer } from "./Utils/request_anwer.js";
 import Image from "next/image.js";
-import Head from "next/head.js";
-import galih from "../assets/galih.jpg";
 import { userContext } from "./Utils/context";
 import defaultpicture from "../assets/defaultuserpicture.png";
 import UynabAI from "../assets/UynabAI.jpg";
-import { useCookies } from "react-cookie";
+
 function Navbar() {
   const { user } = useContext(userContext);
-  const [cookie, setCookie, removeCookie] = useCookies(["user"], { path: "/" });
 
   return (
     <header className="bg-slate-700 p-3 flex justify-between items-center">
@@ -29,11 +26,10 @@ function Navbar() {
 }
 
 function TextAnswer({ answer }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const ans = useRef(null);
+  const bubbleAnswer = useRef(null);
 
   useEffect(() => {
-    ans.current.innerHTML = answer
+    bubbleAnswer.current.innerHTML = answer
       .replace(/\n/g, "<br />")
       .replace(/```(.*?)```/gs, (_, code) => {
         return `<pre style="background-color: #000; padding: 10px; border-radius: 5px; border: 1px solid #000; overflow: auto"><code style="font-family: monospace; color: #fff; padding: 2px 4px; border-radius: 3px;">${code}</code></pre>`;
@@ -44,7 +40,7 @@ function TextAnswer({ answer }) {
       .replace(/\*(.*?)\*/gs, (_, italic) => {
         return `<em>${italic}</em>`;
       });
-  }, [ans]);
+  }, [bubbleAnswer]);
 
   return (
     <div className="p-5 grid gap-2 h-fit w-full overflow-hidden pr-16">
@@ -59,7 +55,7 @@ function TextAnswer({ answer }) {
         <p className="text-white">UynabAI</p>
       </div>
       <div
-        ref={ans}
+        ref={bubbleAnswer}
         className="text-white text-wrap bg-slate-800 w-fit p-2 rounded-2xl rounded-tl-none"
       ></div>
     </div>
@@ -121,7 +117,7 @@ export default function Interface() {
   }, [answer]);
   useEffect(() => {
     alert(`
-    UynabAI hanyalah situs tiruan ChatGPT, situs ini masih dalam tahap pengembangan dan banyak kekurangannya, jadi mohon dimaklumi jika terdapat bug. Jika kamu menemukan bug, silahkan laporkan kepada Developer melalui direct message instagram atau melalui whatsapp.
+    UynabAI hanyalah situs tiruan ChatGPT, situs ini masih dalam tahap pengembangan dan banyak kekurangannya, jadi mohon dimaklumi jika terdapat typo atau keabsurdan jawaban UynabAI. Jika kamu menemukan bug, silahkan laporkan kepada Developer melalui direct message instagram atau melalui whatsapp.
     Untuk menghapus chat kamu dengan UynabAI, silahkan refresh/reload situs ini.
     Peringatan: Jika kamu keluar dari situs ini, chat kamu akan hilang!
     `);

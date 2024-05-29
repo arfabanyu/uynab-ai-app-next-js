@@ -2,7 +2,7 @@ import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { useCookies } from "react-cookie";
 
-export default function Auth({ user, setUser }) {
+export default function Auth({ setUser }) {
   const [cookie, setCookie] = useCookies(["user"]);
   return (
     <GoogleLogin
