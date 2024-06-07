@@ -74,13 +74,13 @@ function TextAnswer({ answer }) {
       </div>
       <div
         ref={bubbleAnswer}
-        className="text-white text-wrap bg-slate-800 w-fit p-2 rounded-2xl rounded-tl-none"
+        className="text-white text-wrap bg-[#222831] w-fit p-2 rounded-2xl rounded-tl-none"
       ></div>
       <button
         onClick={() =>
           navigator.clipboard.writeText(answer).then(() => alert("Text copied"))
         }
-        className="bg-white w-fit p-1 rounded-full hover:bg-slate-300"
+        className="bg-white w-fit p-1 rounded-2xl hover:bg-slate-300"
       >
         copy
       </button>
@@ -103,7 +103,7 @@ function TextQuestion({ question }) {
         />
         <p className="text-white">{user?.name || "user"}</p>
       </div>
-      <p className="text-white text-wrap bg-slate-800 w-fit p-2 rounded-2xl rounded-tr-none">
+      <p className="text-white text-wrap bg-[#222831] w-fit p-2 rounded-2xl rounded-tr-none">
         {question}
       </p>
     </div>
