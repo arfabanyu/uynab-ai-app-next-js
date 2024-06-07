@@ -74,13 +74,13 @@ function TextAnswer({ answer }) {
       </div>
       <div
         ref={bubbleAnswer}
-        className="text-white text-wrap bg-[#222831] w-fit p-2 rounded-2xl rounded-tl-none"
+        className="text-white text-wrap bg-[#222831] w-fit p-2 rounded rounded-tl-none"
       ></div>
       <button
         onClick={() =>
           navigator.clipboard.writeText(answer).then(() => alert("Text copied"))
         }
-        className="bg-[#00adb5] text-white w-fit p-2 rounded-2xl rounded-tl-none hover:bg-slate-300"
+        className="bg-[#00adb5] text-white w-fit p-2 rounded rounded-tl-none hover:bg-slate-300"
       >
         copy
       </button>
@@ -103,7 +103,7 @@ function TextQuestion({ question }) {
         />
         <p className="text-white">{user?.name || "user"}</p>
       </div>
-      <p className="text-white text-wrap bg-[#222831] w-fit p-2 rounded-2xl rounded-tr-none">
+      <p className="text-white text-wrap bg-[#222831] w-fit p-2 rounded rounded-tr-none">
         {question}
       </p>
     </div>
@@ -180,12 +180,12 @@ export default function Interface() {
               }, 0);
             }}
             placeholder="Tanya UynabAI"
-            className="w-full rounded-2xl p-2 focus:outline-none max-h-52 overflow-y-scroll"
+            className="w-full rounded p-2 focus:outline-none max-h-52 overflow-y-scroll"
           />
           <button
             onClick={(e) => submit(e)}
             id="submit"
-            className="bg-[#00adb5] rounded-2xl p-2 text-[#eeeeee] hover:bg-cyan-600 h-fit"
+            className="bg-[#00adb5] rounded p-2 text-[#eeeeee] hover:bg-cyan-600 h-fit"
           >
             Submit
           </button>
