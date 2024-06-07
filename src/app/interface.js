@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef, useState, useContext } from "react";
 import { requestAnswer } from "./Utils/request_anwer.js";
 import { userContext } from "./Utils/context";
@@ -76,9 +77,9 @@ function TextAnswer({ answer }) {
         className="text-white text-wrap bg-slate-800 w-fit p-2 rounded-2xl rounded-tl-none"
       ></div>
       <button
-        // onClick={() =>
-        //   navigator.clipboard.writeText(answer).then(() => alert("Text copied"))
-        // }
+        onClick={() =>
+          navigator.clipboard.writeText(answer).then(() => alert("Text copied"))
+        }
         className="bg-white w-fit p-1 rounded-full hover:bg-slate-300"
       >
         copy
