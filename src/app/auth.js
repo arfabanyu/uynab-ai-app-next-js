@@ -1,11 +1,13 @@
 import { GoogleLogin } from "@react-oauth/google";
-import { jwtDecode } from "jwt-decode";
 import { useCookies } from "react-cookie";
+import { jwtDecode } from "jwt-decode";
 
 export default function Auth({ setUser }) {
   const [cookie, setCookie] = useCookies(["user"]);
   return (
     <GoogleLogin
+      width={20}
+      text="signin"
       onSuccess={(credentialResponse) => {
         setCookie("user", credentialResponse.credential, {
           path: "/",

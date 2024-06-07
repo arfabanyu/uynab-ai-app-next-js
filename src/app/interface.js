@@ -1,25 +1,42 @@
 import { useEffect, useRef, useState, useContext } from "react";
 import { requestAnswer } from "./Utils/request_anwer.js";
-import Image from "next/image.js";
 import { userContext } from "./Utils/context";
 import defaultpicture from "../assets/defaultuserpicture.png";
 import UynabAI from "../assets/UynabAI.jpg";
+import Image from "next/image.js";
+import Auth from "./auth.js";
+import { useCookies } from "react-cookie";
 
 function Navbar() {
-  const { user } = useContext(userContext);
+  const [cookies, setCookie, removeCookies] = useCookies(["user"]);
+  const { user, setUser } = useContext(userContext);
+
+  function logout() {
+    removeCookies("user");
+    setUser(null);
+  }
 
   return (
     <header className="bg-slate-700 p-3 flex justify-between items-center">
       <h1 className="text-white text-3xl">UynabAI</h1>
-      <div className="flex flex-row-reverse gap-2 justify-center items-center cursor-pointer">
-        <Image
-          alt="user"
-          width={40}
-          height={40}
-          src={user.picture || defaultpicture}
-          className="rounded-full"
-        />
-        <p className="text-white">{user.name || "user"}</p>
+      <div className="flex gap-2">
+        <div className="flex flex-row-reverse gap-2 justify-center items-center cursor-pointer">
+          <Image
+            alt="user"
+            width={40}
+            height={40}
+            src={user?.picture || defaultpicture}
+            className="rounded-full"
+          />
+          <p className="text-white">{user?.name || "user"}</p>
+        </div>
+        {user?.name ? (
+          <button className="text-white" onClick={logout}>
+            Logout
+          </button>
+        ) : (
+          <Auth user={user} setUser={setUser} />
+        )}
       </div>
     </header>
   );
@@ -117,8 +134,7 @@ export default function Interface() {
   }, [answer]);
   useEffect(() => {
     alert(`
-    UynabAI hanyalah situs tiruan ChatGPT, situs ini masih dalam tahap pengembangan dan banyak kekurangannya, jadi mohon dimaklumi jika terdapat typo atau keabsurdan jawaban UynabAI. Jika kamu menemukan bug, silahkan laporkan kepada Developer melalui direct message instagram atau melalui whatsapp.
-    Untuk menghapus chat kamu dengan UynabAI, silahkan refresh/reload situs ini.
+    UynabAI hanyalah situs tiruan ChatGPT, situs ini masih dalam tahap pengembangan dan banyak kekurangannya, jadi mohon dimaklumi jika terdapat typo atau keabsurdan jawaban UynabAI. Jika kamu menemukan bug, silahkan laporkan kepada Developer melalui direct message instagram atau melalui whatsapp. Untuk menghapus chat kamu dengan UynabAI, silahkan refresh/reload situs ini.
     Peringatan: Jika kamu keluar dari situs ini, chat kamu akan hilang!
     `);
   }, []);
