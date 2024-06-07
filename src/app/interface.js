@@ -17,8 +17,8 @@ function Navbar() {
   }
 
   return (
-    <header className="bg-slate-700 p-3 flex justify-between items-center">
-      <h1 className="text-white text-3xl">UynabAI</h1>
+    <header className="bg-[#222831] p-3 flex justify-between items-center">
+      <h1 className="text-[#eeeeee] text-3xl">UynabAI</h1>
       <div className="flex gap-2">
         <div className="flex flex-row-reverse gap-2 justify-center items-center cursor-pointer">
           <Image
@@ -75,6 +75,14 @@ function TextAnswer({ answer }) {
         ref={bubbleAnswer}
         className="text-white text-wrap bg-slate-800 w-fit p-2 rounded-2xl rounded-tl-none"
       ></div>
+      <button
+        onClick={() =>
+          navigator.clipboard.writeText(answer).then(() => alert("Text copied"))
+        }
+        className="bg-white w-fit p-1 rounded-full hover:bg-slate-300"
+      >
+        copy
+      </button>
     </div>
   );
 }
@@ -88,8 +96,8 @@ function TextQuestion({ question }) {
         <Image
           width={40}
           height={40}
-          src={user.picture || defaultpicture}
-          alt={user.name}
+          src={user?.picture || defaultpicture}
+          alt={user?.name}
           className="rounded-full"
         />
         <p className="text-white">{user.name || "user"}</p>
@@ -132,14 +140,9 @@ export default function Interface() {
       output.current.scrollTop = output.current.scrollHeight;
     }, 1000);
   }, [answer]);
-  useEffect(() => {
-    alert(`
-    UynabAI hanyalah situs tiruan ChatGPT, situs ini masih dalam tahap pengembangan dan banyak kekurangannya, jadi mohon dimaklumi jika terdapat typo atau keabsurdan jawaban UynabAI. Jika kamu menemukan bug, silahkan laporkan kepada Developer melalui direct message instagram atau melalui whatsapp. Untuk menghapus chat kamu dengan UynabAI, silahkan refresh/reload situs ini.
-    Peringatan: Jika kamu keluar dari situs ini, chat kamu akan hilang!
-    `);
-  }, []);
+
   return (
-    <main className="bg-slate-600 h-screen flex flex-col">
+    <main className="bg-[#393e46] h-screen flex flex-col">
       <Navbar />
       <section
         ref={output}
@@ -148,14 +151,21 @@ export default function Interface() {
       >
         {children.map((child) => child)}
         {children.length === 0 && (
-          <h1 className="text-3xl text-opacity-25 text-white grid place-content-center h-full">
-            UynabAI
-          </h1>
+          <div className="flex items-center justify-center flex-col h-full opacity-50">
+            <Image
+              src={UynabAI}
+              alt="UynabAI"
+              width={100}
+              height={100}
+              className="rounded-full border"
+            />
+            <h1 className="text-3xl text-opacity-50 text-white">UynabAI</h1>
+          </div>
         )}
       </section>
       <section
         id="bottom"
-        className="grid w-screen max-h-64 bg-slate-700 p-2 gap-2"
+        className="grid w-screen max-h-64 bg-[#222831] p-2 gap-2"
       >
         <div className="flex gap-2 items-end">
           <textarea
@@ -174,7 +184,7 @@ export default function Interface() {
           <button
             onClick={(e) => submit(e)}
             id="submit"
-            className="bg-cyan-500 rounded p-1 text-white hover:bg-cyan-600 h-fit"
+            className="bg-[#00adb5] rounded p-1 text-[#eeeeee] hover:bg-cyan-600 h-fit"
           >
             Submit
           </button>

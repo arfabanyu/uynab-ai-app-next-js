@@ -12,8 +12,12 @@ export default function Home() {
   const [cookie] = useCookies(["user"], { path: "/" });
   useEffect(() => {
     cookie.user && setUser(jwtDecode(cookie.user));
+    alert(`
+      UynabAI hanyalah situs tiruan ChatGPT, situs ini masih dalam tahap pengembangan dan banyak kekurangannya, jadi mohon dimaklumi jika terdapat typo atau keabsurdan jawaban UynabAI. Jika kamu menemukan bug, silahkan laporkan kepada Developer melalui direct message instagram atau melalui whatsapp. Untuk menghapus chat kamu dengan UynabAI, silahkan refresh/reload situs ini.
+      Peringatan: Jika kamu keluar dari situs ini, chat kamu akan hilang!
+      `);
   }, []);
-
+  
   return (
     <GoogleOAuthProvider clientId={CLIENT_ID}>
       <CookiesProvider defaultSetOptions={{ path: "/" }}>
