@@ -80,7 +80,7 @@ function TextAnswer({ answer }) {
         onClick={() =>
           navigator.clipboard.writeText(answer).then(() => alert("Text copied"))
         }
-        className="bg-white w-fit p-1 rounded-2xl hover:bg-slate-300"
+        className="bg-[#00adb5] text-white w-fit p-2 rounded-2xl rounded-tl-none hover:bg-slate-300"
       >
         copy
       </button>
@@ -168,7 +168,7 @@ export default function Interface() {
         id="bottom"
         className="grid w-screen max-h-64 bg-[#222831] p-2 gap-2"
       >
-        <div className="flex gap-2 items-end">
+        <div className="flex gap-2 items-center">
           <textarea
             ref={input}
             id="content"
@@ -180,12 +180,12 @@ export default function Interface() {
               }, 0);
             }}
             placeholder="Tanya UynabAI"
-            className="w-full rounded p-1 focus:outline-none max-h-52 overflow-y-scroll"
+            className="w-full rounded-2xl p-2 focus:outline-none max-h-52 overflow-y-scroll"
           />
           <button
             onClick={(e) => submit(e)}
             id="submit"
-            className="bg-[#00adb5] rounded p-1 text-[#eeeeee] hover:bg-cyan-600 h-fit"
+            className="bg-[#00adb5] rounded-2xl p-2 text-[#eeeeee] hover:bg-cyan-600 h-fit"
           >
             Submit
           </button>
