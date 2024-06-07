@@ -100,7 +100,7 @@ function TextQuestion({ question }) {
           alt={user?.name}
           className="rounded-full"
         />
-        <p className="text-white">{user.name || "user"}</p>
+        <p className="text-white">{user?.name || "user"}</p>
       </div>
       <p className="text-white text-wrap bg-slate-800 w-fit p-2 rounded-2xl rounded-tr-none">
         {question}
@@ -123,7 +123,7 @@ export default function Interface() {
       ...children,
       <TextQuestion key={input.current.value} question={input.current.value} />,
     ]);
-    requestAnswer(input.current.value, user.name, answer).then((res) =>
+    requestAnswer(input.current.value).then((res) =>
       setAnswer(res)
     );
   }

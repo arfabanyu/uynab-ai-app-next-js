@@ -5,7 +5,7 @@ const groq = new Groq({
   apiKey: API_KEY,
   dangerouslyAllowBrowser: true,
 });
-export async function requestAnswer(content, prev) {
+export async function requestAnswer(content) {
   const answer = await groq.chat.completions.create({
     model: "gemma-7b-it",
     messages: [
