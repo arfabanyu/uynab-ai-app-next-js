@@ -198,7 +198,7 @@ export default function Interface() {
                 </div>
                 <footer className='text-white text-center'>
                     made with 💖 by{' '}
-                    <a href='https://www.instagram.com/nyu_arfx'>Dev</a>
+                    <a href='https://www.instagram.com/arfabanyu'>Dev</a>
                 </footer>
             </section>
         </main>
